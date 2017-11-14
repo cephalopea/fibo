@@ -242,10 +242,12 @@
                  lomp))])
       (makelayerx layers lump))))
 
+(notpascal 10 :prime)
+
 ;;combo, but using explicit search
 ;;way slower but works
 (defn recombo
-  [patterna patternb amt]
+  [amt patterna patternb]
   (let [a (get-in patternmap [patterna :pattern])
         b (get-in patternmap [patternb :pattern])
         inca (get-in patternmap [patterna :inc])
@@ -257,10 +259,12 @@
         (< (count (deepsearch (findtofn (apply max y) patterna) patternb)) term) (recur (incb y) term)
         (deepsearch (findtofn (apply max y) patterna) patternb)))))
 
-(recombo :fibonacci :prime 8)
+(combo 4 :fibonacci :prime)
+
+(recombo 5 :fibonacci :prime)
 ;; @@
 ;; =>
-;;; {"type":"list-like","open":"<span class='clj-list'>(</span>","close":"<span class='clj-list'>)</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-long'>1</span>","value":"1"},{"type":"html","content":"<span class='clj-long'>1</span>","value":"1"},{"type":"html","content":"<span class='clj-long'>2</span>","value":"2"},{"type":"html","content":"<span class='clj-long'>3</span>","value":"3"},{"type":"html","content":"<span class='clj-long'>5</span>","value":"5"},{"type":"html","content":"<span class='clj-long'>13</span>","value":"13"},{"type":"html","content":"<span class='clj-long'>89</span>","value":"89"},{"type":"html","content":"<span class='clj-long'>233</span>","value":"233"}],"value":"(1 1 2 3 5 13 89 233)"}
+;;; {"type":"list-like","open":"<span class='clj-list'>(</span>","close":"<span class='clj-list'>)</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-long'>1</span>","value":"1"},{"type":"html","content":"<span class='clj-long'>1</span>","value":"1"},{"type":"html","content":"<span class='clj-long'>2</span>","value":"2"},{"type":"html","content":"<span class='clj-long'>3</span>","value":"3"},{"type":"html","content":"<span class='clj-long'>5</span>","value":"5"}],"value":"(1 1 2 3 5)"}
 ;; <=
 
 ;; @@
