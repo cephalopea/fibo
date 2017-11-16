@@ -170,6 +170,7 @@
 ;;tree with some randomish numbers
 (def tree [[5] 38 [23 21 2] 4 86 34 2 75 64 8 45 [27 23 65 90 86 5 1 8 100] [9] 8 65 96 54 41 [77 34 66]])
 
+;;tells whether a member of a collection is also a term of a given pattern
 (defn ispattern? 
   [stuff patternkey] 
   (contains? (set (findtofn (apply max (flatten stuff)) patternkey)) (first stuff)))
@@ -246,6 +247,7 @@
 
 ;;combo, but using explicit search
 ;;way slower but works
+;;also duplicates the 1 in fibonacci sequence
 (defn recombo
   [amt patterna patternb]
   (let [a (get-in patternmap [patterna :pattern])
